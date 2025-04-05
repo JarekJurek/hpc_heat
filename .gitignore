@@ -1,1 +1,4 @@
 *.html
+*.err
+Figures/*
+!Figures/.gitkeep
