@@ -1,8 +1,10 @@
 from os.path import join
 import sys
-import matplotlib.pyplot as plt
+
 import numpy as np
 from time import perf_counter
+from visualize import visualize_data, visualize_results
+
 
 def load_data(load_dir, bid):
     SIZE = 512
@@ -12,6 +14,7 @@ def load_data(load_dir, bid):
     return u, interior_mask
 
 
+# @profile  # TASK 4
 def jacobi(u, interior_mask, max_iter, atol=1e-6):
     u = np.copy(u)
 
@@ -40,69 +43,6 @@ def summary_stats(u, interior_mask):
         'pct_below_15': pct_below_15,
     }
 
-##### TASK 1 #####
-def visualize_data(load_dir, building_ids):
-    for bid in building_ids:
-        u, interior_mask = load_data(load_dir, bid)
-        
-        _, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5))
-        
-        im1 = ax1.imshow(u[1:-1, 1:-1], cmap='hot', vmin=0, vmax=30)
-        ax1.set_title(f"Building {bid} - Initial Temperature", fontweight='bold')
-        plt.colorbar(im1, ax=ax1, label="Temperature (°C)")
-        
-        _ = ax2.imshow(interior_mask, cmap='binary')
-        ax2.set_title(f"Building {bid} - Interior Mask", fontweight='bold')
-        
-        plt.tight_layout()
-        plt.savefig(f"Figures/building_{bid}_input.png")
-        plt.close()
-
-
-##### TASK 3 #####
-def visualize_results(building_ids, all_u0, all_u, all_interior_mask, output_dir="Figures/results"):
-    for i, bid in enumerate(building_ids):
-        u0 = all_u0[i]
-        u = all_u[i]
-        interior_mask = all_interior_mask[i]
-        
-        # Get statistics for this building
-        stats = summary_stats(u, interior_mask)
-        
-        # Create a figure with 3 subplots
-        _, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(18, 6))
-        
-        # Plot initial temperature
-        im1 = ax1.imshow(u0[1:-1, 1:-1], cmap='hot', vmin=0, vmax=30)
-        ax1.set_title(f"Building {bid} - Initial Temperature", fontweight='bold')
-        plt.colorbar(im1, ax=ax1, label="Temperature (°C)")
-        
-        # Plot final temperature
-        im2 = ax2.imshow(u[1:-1, 1:-1], cmap='hot', vmin=0, vmax=30)
-        ax2.set_title(f"Building {bid} - Final Temperature", fontweight='bold')
-        plt.colorbar(im2, ax=ax2, label="Temperature (°C)")
-        
-        # Plot temperature histogram for interior points
-        u_interior = u[1:-1, 1:-1][interior_mask]
-        ax3.hist(u_interior.flatten(), bins=50, color='skyblue', edgecolor='black', alpha=0.7)
-        
-        # Add lines for key statistics
-        ax3.axvline(stats['mean_temp'], color='red', linestyle='dashed', linewidth=2, 
-                    label=f"Mean: {stats['mean_temp']:.2f}°C")
-        ax3.axvline(18, color='green', linestyle='dashed', linewidth=2, 
-                    label=f"Above 18°C: {stats['pct_above_18']:.1f}%")
-        ax3.axvline(15, color='orange', linestyle='dashed', linewidth=2, 
-                    label=f"Below 15°C: {stats['pct_below_15']:.1f}%")
-        
-        ax3.set_title(f"Building {bid} - Temperature Distribution", fontweight='bold')
-        ax3.set_xlabel("Temperature (°C)")
-        ax3.set_ylabel("Frequency")
-        ax3.legend()
-        
-        plt.tight_layout()
-        plt.savefig(f"{output_dir}/building_{bid}_results.png")
-        plt.close()
-
 
 if __name__ == '__main__':
     # Load data
@@ -116,14 +56,17 @@ if __name__ == '__main__':
         N = int(sys.argv[1])
     building_ids = building_ids[:N]
     
-    # Visualize some examples (Task 1)
+    # TASK 1: Visualize some examples
     # num_to_visualize = 3
     # if len(sys.argv) > 1:
     #     num_to_visualize = int(sys.argv[1])
 
     # building_ids_to_visualize = building_ids[:num_to_visualize]
-    # visualize_data(LOAD_DIR, building_ids_to_visualize)
-    
+    # for bid in building_ids:
+    #     print(bid)
+    #     u, interior_mask = load_data(LOAD_DIR, bid)
+    #     visualize_data(bid, u, interior_mask)
+
     # Load floor plans
     load_start = perf_counter()
     all_u0 = np.empty((N, 514, 514))
@@ -150,10 +93,13 @@ if __name__ == '__main__':
         all_u[i] = u
         print(f"Building {building_ids[i]} processed in {building_times[-1]:.2f} seconds")
 
-    # Visualize results (Task 3)
-    visualize_results(building_ids, all_u0, all_u, all_interior_mask)
+    # Get statistics for this building
+    stats = summary_stats(u, interior_mask)
 
-    # Print summary timing (Task 2) 
+    # TASK3: Visualize results
+    visualize_results(building_ids, all_u0, all_u, all_interior_mask, stats)
+    
+    # TASK 2: Print summary timing
     avg_time = np.mean(building_times)
     total_buildings = 4571
     estimated_total_time = avg_time * total_buildings
