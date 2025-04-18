@@ -2,3 +2,4 @@
 *.err
 Figures/*
 !Figures/.gitkeep
+__pycache__/
