@@ -26,6 +26,7 @@ def visualize_results(building_ids, all_u0, all_u, all_interior_mask, stats, out
         u0 = all_u0[i]
         u = all_u[i]
         interior_mask = all_interior_mask[i]
+        stat = stats[i]
 
         # Create a figure with 3 subplots
         _, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(18, 6))
@@ -47,12 +48,12 @@ def visualize_results(building_ids, all_u0, all_u, all_interior_mask, stats, out
                  color='skyblue', edgecolor='black', alpha=0.7)
 
         # Add lines for key statistics
-        ax3.axvline(stats['mean_temp'], color='red', linestyle='dashed', linewidth=2,
-                    label=f"Mean: {stats['mean_temp']:.2f}°C")
+        ax3.axvline(stat['mean_temp'], color='red', linestyle='dashed', linewidth=2,
+                    label=f"Mean: {stat['mean_temp']:.2f}°C")
         ax3.axvline(18, color='green', linestyle='dashed', linewidth=2,
-                    label=f"Above 18°C: {stats['pct_above_18']:.1f}%")
+                    label=f"Above 18°C: {stat['pct_above_18']:.1f}%")
         ax3.axvline(15, color='orange', linestyle='dashed', linewidth=2,
-                    label=f"Below 15°C: {stats['pct_below_15']:.1f}%")
+                    label=f"Below 15°C: {stat['pct_below_15']:.1f}%")
 
         ax3.set_title(
             f"Building {bid} - Temperature Distribution", fontweight='bold')

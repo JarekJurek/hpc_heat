@@ -94,10 +94,13 @@ if __name__ == '__main__':
         print(f"Building {building_ids[i]} processed in {building_times[-1]:.2f} seconds")
 
     # Get statistics for this building
-    stats = summary_stats(u, interior_mask)
+    all_stats = []
+    for u, mask in zip(all_u, all_interior_mask):
+        stats = summary_stats(u, mask)
+        all_stats.append(stats)
 
     # TASK3: Visualize results
-    visualize_results(building_ids, all_u0, all_u, all_interior_mask, stats)
+    visualize_results(building_ids, all_u0, all_u, all_interior_mask, all_stats)
     
     # TASK 2: Print summary timing
     avg_time = np.mean(building_times)
