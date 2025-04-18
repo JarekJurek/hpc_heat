@@ -1,0 +1,110 @@
+Running Task 5a-d on 60 buildings
+
+Running with 1 process(es)...
+Time: 708.70 seconds
+Running with 2 process(es)...
+Time: 396.51 seconds
+Running with 3 process(es)...
+Time: 286.88 seconds
+Running with 4 process(es)...
+Time: 220.45 seconds
+Running with 5 process(es)...
+Time: 198.59 seconds
+Running with 6 process(es)...
+Time: 172.88 seconds
+Running with 7 process(es)...
+Time: 160.57 seconds
+Running with 8 process(es)...
+Time: 136.09 seconds
+Running with 9 process(es)...
+Time: 125.62 seconds
+Running with 10 process(es)...
+Time: 118.57 seconds
+Running with 11 process(es)...
+Time: 115.49 seconds
+Running with 12 process(es)...
+Time: 110.72 seconds
+Running with 13 process(es)...
+Time: 111.18 seconds
+Running with 14 process(es)...
+Time: 104.59 seconds
+Running with 15 process(es)...
+Time: 85.98 seconds
+Running with 16 process(es)...
+Time: 84.62 seconds
+Running with 17 process(es)...
+Time: 80.78 seconds
+Running with 18 process(es)...
+Time: 80.17 seconds
+Running with 19 process(es)...
+Time: 81.02 seconds
+Running with 20 process(es)...
+Time: 81.95 seconds
+
+-------------------- Amdahl's Law --------------------
+Estimated parallel fraction (p): 0.9390
+Theoretical max speed-up: 16.41
+Achieved speed-up: 8.84 with 18 processes
+
+Estimated time to process all 4571 buildings: 6107.69 seconds
+≈ 1.70 hours or 0.07 days
+------------------------------------------------------
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@hpc.dtu.dk>
+Subject: Job 24734984: <task5> in cluster <dcc> Done
+
+Job <task5> was submitted from host <n-62-30-5> by user <s242911> in cluster <dcc> at Fri Apr 18 16:50:50 2025
+Job was executed on host(s) <22*n-62-31-10>, in queue <hpc>, as user <s242911> in cluster <dcc> at Fri Apr 18 16:50:51 2025
+</zhome/a2/c/213547> was used as the home directory.
+</zhome/a2/c/213547/python_and_hpc/hpc_heat> was used as the working directory.
+Started at Fri Apr 18 16:50:51 2025
+Terminated at Fri Apr 18 17:48:39 2025
+Results reported at Fri Apr 18 17:48:39 2025
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/bash
+#BSUB -J task5
+#BSUB -q hpc
+#BSUB -W 1:00
+#BSUB -R "rusage[mem=1024MB]"
+#BSUB -o BatchJobOutput/ProjectCPU_task5_%J.out
+#BSUB -e BatchJobOutput/ProjectCPU_task5_%J.err
+
+#BSUB -R "select[model == XeonGold6126]"
+
+#BSUB -R "span[hosts=1]"
+#BSUB -n 22
+
+source /dtu/projects/02613_2025/conda/conda_init.sh
+conda activate 02613
+
+python task5.py
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   19599.92 sec.
+    Max Memory :                                 906 MB
+    Average Memory :                             628.30 MB
+    Total Requested Memory :                     22528.00 MB
+    Delta Memory :                               21622.00 MB
+    Max Swap :                                   -
+    Max Processes :                              24
+    Max Threads :                                28
+    Run time :                                   3508 sec.
+    Turnaround time :                            3469 sec.
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <BatchJobOutput/ProjectCPU_task5_24734984.err> for stderr output of this job.
+
