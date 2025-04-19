@@ -1,0 +1,63 @@
+
+-------------------- Timing results --------------------
+Time to load 10 buildings: 0.33 seconds
+Average time per building: 2.48 seconds
+Estimated time for all 4571 buildings: 11353.43 seconds
+That's approximately 3.15 hours or 0.13 days
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@hpc.dtu.dk>
+Subject: Job 24738283: <task9> in cluster <dcc> Done
+
+Job <task9> was submitted from host <n-62-30-8> by user <s193992> in cluster <dcc> at Sat Apr 19 17:22:41 2025
+Job was executed on host(s) <4*n-62-12-22>, in queue <c02613>, as user <s193992> in cluster <dcc> at Sat Apr 19 17:22:42 2025
+</zhome/b2/6/146329> was used as the home directory.
+</zhome/b2/6/146329/Documents/02613_PyHPC/project> was used as the working directory.
+Started at Sat Apr 19 17:22:42 2025
+Terminated at Sat Apr 19 17:23:11 2025
+Results reported at Sat Apr 19 17:23:11 2025
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/sh
+#BSUB -q c02613
+#BSUB -J task9
+#BSUB -n 4
+#BSUB -R "span[hosts=1]"
+#BSUB -R "rusage[mem=1GB]"
+#BSUB -gpu "num=1:mode=exclusive_process"
+#BSUB -W 00:10
+#BSUB -o BatchJobOutput/ProjectGPU_task9%J.out
+#BSUB -e BatchJobOutput/ProjectGPU_task9%J.err
+
+source /dtu/projects/02613_2025/conda/conda_init.sh
+conda activate 02613
+
+python task9.py 10
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   26.66 sec.
+    Max Memory :                                 -
+    Average Memory :                             -
+    Total Requested Memory :                     4096.00 MB
+    Delta Memory :                               -
+    Max Swap :                                   -
+    Max Processes :                              -
+    Max Threads :                                -
+    Run time :                                   0 sec.
+    Turnaround time :                            30 sec.
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <BatchJobOutput/ProjectGPU_task924738283.err> for stderr output of this job.
+
