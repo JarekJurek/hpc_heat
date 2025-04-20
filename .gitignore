@@ -2,4 +2,5 @@
 *.err
 Figures/*
 !Figures/.gitkeep
+!Figures/task5*.png
 __pycache__/
