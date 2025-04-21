@@ -169,7 +169,7 @@ if __name__ == '__main__':
         ax.plot(num_processes, speedups_dynamic, marker="o", linestyle="-", color="green",label="Dynamic Scheduling Speedup")
         ax.axhline(y=theoretical_max, color="g", linestyle="--", label="Theoretical max Dynamic Speedup")
         ax.legend()
-        fig.savefig(f"task5_with_dynamic_scheduling.png")
+        fig.savefig(f"task6_with_dynamic_scheduling.png")
 
         
     # Run the experiment for Task 7
@@ -184,5 +184,5 @@ if __name__ == '__main__':
         ax.plot(num_processes, speedups_numba, marker="o", linestyle="-", color="blue",label="Numba Speedup")
         ax.axhline(y=theoretical_max, color="b", linestyle="--", label="Max Numba Speedup")
         ax.legend()
-        fig.savefig(f"task5_with_numba.png")
+        fig.savefig(f"task7_with_numba.png")
 

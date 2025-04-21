@@ -11,6 +11,14 @@
 #BSUB -R "span[hosts=1]"
 #BSUB -n 20
 
-source /zhome/69/0/168594/Documents/HPC_course/venv/bin/activate
+source /dtu/projects/02613_2025/conda/conda_init.sh
+conda activate 02613
 
-python task7.py numba dynamic
+# For task 6
+# python task6_and_7.py dynamic
+
+# For task 7
+# python task6_and_7.py numba
+
+# To run both task 6 and 7 together:
+python task6_and_7.py numba dynamic

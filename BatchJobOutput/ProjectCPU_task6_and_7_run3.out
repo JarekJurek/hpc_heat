@@ -49,7 +49,8 @@ Achieved speed-up: 8.73 with 18 processes
 Estimated time to process all 4571 buildings: 6447.81 seconds
 ≈ 1.79 hours or 0.07 days
 ------------------------------------------------------
-Running Task dynamic on 60 buildings
+
+Running task 6 with dynamic on 60 buildings
 
 Running with 1 process(es)...
 Time: 721.39 seconds
@@ -101,6 +102,7 @@ Achieved speed-up: 8.35 with 20 processes
 Estimated time to process all 4571 buildings: 6578.32 seconds
 ≈ 1.83 hours or 0.08 days
 ------------------------------------------------------
+
 Running Task 5a on 20 buildings
 
 Running with 1 process(es)...
@@ -143,7 +145,8 @@ Running with 19 process(es)...
 Time: 28.38 seconds
 Running with 20 process(es)...
 Time: 26.81 seconds
-Running Task numba on 20 buildings
+
+Running task 7 with numba on 20 buildings
 
 Running with 1 process(es)...
 Time: 193.25 seconds
