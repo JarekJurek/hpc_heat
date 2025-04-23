@@ -1,0 +1,66 @@
+
+-------------------- Timing results --------------------
+Time to load 4571 buildings: 118.82 seconds
+Average time per building: 0.01 seconds
+Estimated time for all 4571 buildings: 56.64 seconds
+That's approximately 0.02 hours or 0.00 days
+
+-------------------- Summary statistics --------------------
+Summary statistics saved to building_summary_stats.csv
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@hpc.dtu.dk>
+Subject: Job 24768651: <task12> in cluster <dcc> Done
+
+Job <task12> was submitted from host <hpclogin1> by user <s215158> in cluster <dcc> at Wed Apr 23 16:46:39 2025
+Job was executed on host(s) <4*n-62-18-9>, in queue <gpua100>, as user <s215158> in cluster <dcc> at Wed Apr 23 16:52:14 2025
+</zhome/f9/0/168881> was used as the home directory.
+</zhome/f9/0/168881/Desktop/ProjectHPC/hpc_heat> was used as the working directory.
+Started at Wed Apr 23 16:52:14 2025
+Terminated at Wed Apr 23 16:55:24 2025
+Results reported at Wed Apr 23 16:55:24 2025
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/sh
+#BSUB -q gpua100
+#BSUB -J task12
+#BSUB -n 4
+#BSUB -R "span[hosts=1]"
+#BSUB -R "rusage[mem=3GB]"
+#BSUB -gpu "num=1:mode=exclusive_process"
+#BSUB -W 00:30
+#BSUB -o BatchJobOutput/ProjectGPU_task12%J.out
+#BSUB -e BatchJobOutput/ProjectGPU_task12%J.err
+
+source /dtu/projects/02613_2025/conda/conda_init.sh
+conda activate 02613
+
+python task12.py 4571
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   86.53 sec.
+    Max Memory :                                 152 MB
+    Average Memory :                             137.00 MB
+    Total Requested Memory :                     12288.00 MB
+    Delta Memory :                               12136.00 MB
+    Max Swap :                                   -
+    Max Processes :                              4
+    Max Threads :                                7
+    Run time :                                   192 sec.
+    Turnaround time :                            525 sec.
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <BatchJobOutput/ProjectGPU_task1224768651.err> for stderr output of this job.
+
