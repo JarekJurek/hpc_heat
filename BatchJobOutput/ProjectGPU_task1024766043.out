@@ -1,0 +1,68 @@
+
+-------------------- Timing results --------------------
+Time to load 10 buildings: 0.43 seconds
+Average time per building: 0.02 seconds
+Estimated time for all 4571 buildings: 113.98 seconds
+That's approximately 0.03 hours or 0.00 days
+Generating '/tmp/nsys-report-14d0.qdstrm'
+[1/1] [0%                          ] task10_prof_fixed.nsys-rep[1/1] [0%                          ] task10_prof_fixed.nsys-rep[1/1] [0%                          ] task10_prof_fixed.nsys-rep[1/1] [7%                          ] task10_prof_fixed.nsys-rep[1/1] [6%                          ] task10_prof_fixed.nsys-rep[1/1] [================70%         ] task10_prof_fixed.nsys-rep[1/1] [===================81%      ] task10_prof_fixed.nsys-rep[1/1] [========================100%] task10_prof_fixed.nsys-rep[1/1] [========================100%] task10_prof_fixed.nsys-rep
+Generated:
+    /zhome/f9/0/168881/Desktop/ProjectHPC/hpc_heat/task10_prof_fixed.nsys-rep
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@hpc.dtu.dk>
+Subject: Job 24766043: <task10> in cluster <dcc> Done
+
+Job <task10> was submitted from host <hpclogin1> by user <s215158> in cluster <dcc> at Wed Apr 23 15:42:23 2025
+Job was executed on host(s) <4*n-62-12-22>, in queue <c02613>, as user <s215158> in cluster <dcc> at Wed Apr 23 15:42:24 2025
+</zhome/f9/0/168881> was used as the home directory.
+</zhome/f9/0/168881/Desktop/ProjectHPC/hpc_heat> was used as the working directory.
+Started at Wed Apr 23 15:42:24 2025
+Terminated at Wed Apr 23 15:42:32 2025
+Results reported at Wed Apr 23 15:42:32 2025
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/sh
+#BSUB -q c02613
+#BSUB -J task10
+#BSUB -n 4
+#BSUB -R "span[hosts=1]"
+#BSUB -R "rusage[mem=1GB]"
+#BSUB -gpu "num=1:mode=exclusive_process"
+#BSUB -W 00:10
+#BSUB -o BatchJobOutput/ProjectGPU_task10%J.out
+#BSUB -e BatchJobOutput/ProjectGPU_task10%J.err
+
+source /dtu/projects/02613_2025/conda/conda_init.sh
+conda activate 02613
+
+# nsys profile -o task10_prof python task9.py 10
+nsys profile -o task10_prof_fixed python task10.py 10
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   2.30 sec.
+    Max Memory :                                 -
+    Average Memory :                             -
+    Total Requested Memory :                     4096.00 MB
+    Delta Memory :                               -
+    Max Swap :                                   -
+    Max Processes :                              -
+    Max Threads :                                -
+    Run time :                                   82 sec.
+    Turnaround time :                            9 sec.
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <BatchJobOutput/ProjectGPU_task1024766043.err> for stderr output of this job.
+
