@@ -1,0 +1,161 @@
+Running Task 5a on 60 buildings
+
+Running with 1 process(es)...
+Time: 593.11 seconds
+Running with 2 process(es)...
+Time: 317.89 seconds
+Running with 3 process(es)...
+Time: 226.94 seconds
+Running with 4 process(es)...
+Time: 195.58 seconds
+Running with 5 process(es)...
+Time: 167.48 seconds
+Running with 6 process(es)...
+Time: 155.77 seconds
+Running with 7 process(es)...
+Time: 137.52 seconds
+Running with 8 process(es)...
+Time: 124.09 seconds
+Running with 9 process(es)...
+Time: 113.19 seconds
+Running with 10 process(es)...
+Time: 112.31 seconds
+Running with 11 process(es)...
+Time: 108.54 seconds
+Running with 12 process(es)...
+Time: 108.57 seconds
+Running with 13 process(es)...
+Time: 103.08 seconds
+Running with 14 process(es)...
+Time: 101.74 seconds
+Running with 15 process(es)...
+Time: 83.62 seconds
+Running with 16 process(es)...
+Time: 82.74 seconds
+Running with 17 process(es)...
+Time: 85.03 seconds
+Running with 18 process(es)...
+Time: 81.76 seconds
+Running with 19 process(es)...
+Time: 83.58 seconds
+Running with 20 process(es)...
+Time: 83.39 seconds
+
+-------------------- Amdahl's Law --------------------
+Estimated parallel fraction (p): 0.9129
+Theoretical max speed-up: 11.48
+Achieved speed-up: 7.25 with 18 processes
+
+Estimated time to process all 4571 buildings: 6229.12 seconds
+≈ 1.73 hours or 0.07 days
+------------------------------------------------------
+Running Task dynamic on 60 buildings
+
+Running with 1 process(es)...
+Time: 598.43 seconds
+Running with 2 process(es)...
+Time: 330.57 seconds
+Running with 3 process(es)...
+Time: 215.72 seconds
+Running with 4 process(es)...
+Time: 182.70 seconds
+Running with 5 process(es)...
+Time: 189.73 seconds
+Running with 6 process(es)...
+Time: 142.83 seconds
+Running with 7 process(es)...
+Time: 124.11 seconds
+Running with 8 process(es)...
+Time: 120.62 seconds
+Running with 9 process(es)...
+Time: 109.29 seconds
+Running with 10 process(es)...
+Time: 103.57 seconds
+Running with 11 process(es)...
+Time: 97.53 seconds
+Running with 12 process(es)...
+Time: 96.34 seconds
+Running with 13 process(es)...
+Time: 89.04 seconds
+Running with 14 process(es)...
+Time: 87.62 seconds
+Running with 15 process(es)...
+Time: 94.29 seconds
+Running with 16 process(es)...
+Time: 83.33 seconds
+Running with 17 process(es)...
+Time: 83.85 seconds
+Running with 18 process(es)...
+Time: 85.61 seconds
+Running with 19 process(es)...
+Time: 81.53 seconds
+Running with 20 process(es)...
+Time: 82.47 seconds
+
+-------------------- Amdahl's Law --------------------
+Amdahl's Law analysis for dynamic scheduling experiment
+Estimated parallel fraction (p): 0.9118
+Theoretical max speed-up: 11.33
+Achieved speed-up: 7.34 with 19 processes
+
+Estimated time to process all 4571 buildings: 6211.06 seconds
+≈ 1.73 hours or 0.07 days
+------------------------------------------------------
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@hpc.dtu.dk>
+Subject: Job 24816439: <task67> in cluster <dcc> Done
+
+Job <task67> was submitted from host <gbarlogin1> by user <s215225> in cluster <dcc> at Sun Apr 27 17:09:31 2025
+Job was executed on host(s) <20*n-62-31-9>, in queue <hpc>, as user <s215225> in cluster <dcc> at Sun Apr 27 18:20:29 2025
+</zhome/69/0/168594> was used as the home directory.
+</zhome/69/0/168594/Documents/HPC_course/hpc_heat> was used as the working directory.
+Started at Sun Apr 27 18:20:29 2025
+Terminated at Sun Apr 27 20:02:11 2025
+Results reported at Sun Apr 27 20:02:11 2025
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/bash
+#BSUB -J task67
+#BSUB -q hpc
+#BSUB -W 3:00
+#BSUB -R "rusage[mem=1024MB]"
+#BSUB -o BatchJobOutput/ProjectCPU_task67_%J.out
+#BSUB -e BatchJobOutput/ProjectCPU_task67_%J.err
+
+#BSUB -R "select[model == XeonGold6126]"
+
+#BSUB -R "span[hosts=1]"
+#BSUB -n 20
+
+source /zhome/69/0/168594/Documents/HPC_course/venv/bin/activate
+
+python task7.py  dynamic
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   37820.80 sec.
+    Max Memory :                                 910 MB
+    Average Memory :                             688.89 MB
+    Total Requested Memory :                     20480.00 MB
+    Delta Memory :                               19570.00 MB
+    Max Swap :                                   -
+    Max Processes :                              24
+    Max Threads :                                28
+    Run time :                                   6102 sec.
+    Turnaround time :                            10360 sec.
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <BatchJobOutput/ProjectCPU_task67_24816439.err> for stderr output of this job.
+

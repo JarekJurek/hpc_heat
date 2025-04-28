@@ -49,10 +49,13 @@ def parallel_run(N, n_proc, numba=False):
 
 # Task 6 - Dynamic Scheduling
 def parallel_run_dynamic_scheduling(N, n_proc):
-    chunksize = max(1, N // n_proc)
     start = perf_counter()
     with Pool(processes=n_proc) as pool:
-        list(pool.imap_unordered(process_index, range(N)))
+        results = []
+        for i in range(N):
+            results.append(pool.apply_async(process_index, args=(i,)))
+        for r in results:
+            r.get()
     end = perf_counter()
     return end - start
 
